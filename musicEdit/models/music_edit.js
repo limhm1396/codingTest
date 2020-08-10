@@ -14,10 +14,24 @@ module.exports = (sequelize, DataTypes) => {
     }
   };
   music_edit.init({
-    fileName: DataTypes.STRING,
-    albumName: DataTypes.STRING,
-    artistName: DataTypes.STRING,
-    filePath: DataTypes.STRING
+    fileName: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      primaryKey: true,
+    },
+    albumName: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    artistName: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      primaryKey: true,
+    },
+    filePath: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
   }, {
     sequelize,
     modelName: 'music_edit',
