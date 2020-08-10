@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>USER PAGE</title>
+    </head>
+    <body>
+        <h1><%=session.userName%>님 환영합니다.</h1>
+        <form action="/users/logout" method="get">
+            <input type="submit" value="로그아웃">
+        </form>
+        <form action="/users/userPwUpdate" method="get">
+            <input type="submit" value="비밀번호 변경">
+        </form>
+    </body>
+</html>
