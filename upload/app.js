@@ -7,7 +7,17 @@ var logger = require('morgan');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 
+var indexRouter = require('./routes/index');
+var usersRouter = require('./routes/users');
+var fileUploadRouter = require('./routes/upload');
+
 var app = express();
+
+app.use('/', indexRouter);
+app.use('/users', usersRouter);
+app.use('/upload', fileUploadRouter);
+
+app.use('/upload', express.static('uploads'));
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
