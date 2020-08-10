@@ -1,10 +1,22 @@
 const express = require('express');
 const router = express.Router();
 const multer = require("multer");
+const path = require("path");
+
+let storage = multer.diskStorage({
+    destination: function(req, file ,callback){
+        callback(null, "upload/")
+    },
+    filename: function(req, file, callback){
+        let extension = path.extname(file.originalname);
+        let basename = path.basename(file.originalname, extension);
+        callback(null, basename + "-" + Date.now() + extension);
+    }
+});
 
 // 1. multer 미들웨어 등록
 let upload = multer({
-    dest: "upload/"
+    storage: storage
 })
 
 // 뷰 페이지 경로
