@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>MUSIC EDIT</title>
+    </head>
+    <body>
+        <h1>음원 수정</h1>
+        <hr>
+
+        <form action="/edit/<%= post.id %>?_method=PUT" method="post">
+            <table>
+                <tr>
+                    <td>음원명</td>
+                    <td><input type="text" name="editFileName" value="<%=post.fileName%>"></td>
+                </tr>
+                <tr>
+                    <td>앨범명</td>
+                    <td><input type="text" name="editAlbumName" value="<%=post.albumName%>"></td>
+                </tr>
+                <tr>
+                    <td>아티스트명</td>
+                    <td><input type="text" name="editWriter" value="<%=post.artistName%>"></td>
+                </tr>
+            </table>
+            <input type="submit" value="수정">
+        </form>
+        <form action="/upload/update<%=post.id%>" method="post" enctype="multipart/form-data">
+            <input type="file" name="imgFile">
+            <input type="submit" value="음원 업로드하기">
+        </form>
+    </body>
+</html>

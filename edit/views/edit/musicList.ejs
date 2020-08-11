@@ -23,6 +23,10 @@
                 <td><%= post.fileName%></td>
                 <td><%= post.albumName%></td>
                 <td><%= post.artistName%></td>
+                <td><button><a href="/edit/<%=post.id%>">수정</a></button></td>
+                <form action="/edit/<%=post.id%>?_method=DELETE" method="post">
+                    <td><input type="submit" value="삭제"></input></td>
+                </form>
             </tr>
         <% } %>
     </table>

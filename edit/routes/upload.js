@@ -36,7 +36,7 @@ let upload = multer({
     storage: storage
 })
 
-//파일 업로드 처리
+//음 업로드 처리
 router.post('/create', upload.single("imgFile"), function(req, res, next) {
     //파일 객체
     const file_metadata = req.file
@@ -47,6 +47,33 @@ router.post('/create', upload.single("imgFile"), function(req, res, next) {
     dbInsert(tags, file_path);
 
     res.redirect(200, '/edit/musicList');
+});
+
+//음원 수정 업로드 처리
+router.post('/update/:id', upload.single("imgFile"), function(req, res, next) {
+    try {
+        //파일 객체
+        const file_metadata = req.file
+
+        //DB 테이블 업로드
+        const file_path = file_metadata.path;
+        const tags = NodeID3.read(file_path);
+        dbInsert(tags, file_path);
+
+        res.redirect(200, '/edit/musicList');
+
+        let postID = req.params.id;
+  
+        const result = await models.edit.findOne({
+          where: {id: postID}
+        });
+
+        res.render('edit/musicEdit', {
+            post: result
+          });
+    } catch (err) {
+        console.error(err);
+    }
 });
 
 module.exports = router;

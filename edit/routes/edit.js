@@ -16,4 +16,21 @@ router.get('/musicList', async function(req, res, next) {
     }
 });
 
+//수정
+router.get('/musicEdit/:id', async function(req, res, next) {
+    try {
+        let postID = req.params.id;
+  
+        const result = await models.edit.findOne({
+          where: {id: postID}
+        });
+
+        res.render('edit/musicEdit', {
+            post: result
+          });
+    } catch (err) {
+        console.error(err);
+    }
+});
+
 module.exports = router;
