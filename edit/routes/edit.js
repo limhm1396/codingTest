@@ -22,6 +22,22 @@ router.get('/musicList', async function(req, res, next) {
 router.get('/musicEdit/:id', async function(req, res, next) {
     try {
         const postId = req.params.id;
+
+        const result = await models.edit.findOne({
+            where: { id: postId }
+        });
+
+        res.render('edit/musicEdit', {
+            post: result,
+        });
+    } catch (err) {
+        console.error(err);
+    }
+});
+
+router.put('/musicEdit/:id', async function(req, res, next) {
+    try {
+        const postId = req.params.id;
         const body = req.body;
 
         await models.edit.update({
