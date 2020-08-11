@@ -28,7 +28,6 @@ module.exports = {
       }
     }, {
       charset: 'utf8',
-      collate: 'utf8_genral_ci',
     });
   },
   down: async (queryInterface, Sequelize) => {
