@@ -57,4 +57,26 @@ router.get('/musicEdit/:id', async function(req, res, next) {
     }
 });
 
+router.delete('/edit/:id', async function(req, res, next) {
+    try {
+    let postId = req.params.id;
+
+    const filePath = await models.edit.findOne({
+        attributes: ['filePath'],
+    }, {
+        where: {id: postId}
+    })
+  
+    await models.edit.destroy({
+      where: {id: postId}
+    })
+
+    fs.unlink(filePath);
+
+    res.redirect('/edit');
+    } catch (err) {
+      console.error(err);
+    }
+});
+
 module.exports = router;
