@@ -7,7 +7,7 @@ var logger = require('morgan');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 const editRouter = require('./routes/edit');
-const fileuploadRouter = require('./routes/upload');
+const fileUploadRouter = require('./routes/upload');
 const models = require('./models/index.js');
 
 async function dbConnect () {
