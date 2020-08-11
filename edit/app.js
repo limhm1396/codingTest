@@ -6,6 +6,20 @@ var logger = require('morgan');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
+const models = require('./models/index.js');
+
+async function dbConnect () {
+  try {
+    models.sequelize.sync();
+    console.log('DB connect success');
+  }
+  catch (err) {
+    console.log('DB connect fail');
+    console.error(err);
+  }
+}
+
+dbConnect();
 
 var app = express();
 
