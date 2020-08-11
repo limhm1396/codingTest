@@ -6,19 +6,19 @@ module.exports = class music_edit extends Sequelize.Model {
   static init(sequelize) {
     return super.init({
       fileName: {
-        type: DataTypes.STRING,
+        type: Sequelize.STRING,
         allowNull: false,
       },
       albumName: {
-        type: DataTypes.STRING,
+        type: Sequelize.STRING,
         allowNull: false,
       },
       artistName: {
-        type: DataTypes.STRING,
+        type: Sequelize.STRING,
         allowNull: false,
       },
       filePath: {
-        type: DataTypes.STRING,
+        type: Sequelize.STRING(100),
         allowNull: false,
       },
     }, {
