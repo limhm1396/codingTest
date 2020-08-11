@@ -42,7 +42,7 @@ router.post('/create', upload.single("imgFile"), function(req, res, next) {
     const file_metadata = req.file
 
     //DB 테이블 업로드
-    const file_path = file_metadata.destination + file_metadata.originalname;
+    const file_path = '../' + file_metadata.destination + file_metadata.originalname;
     const tags = NodeID3.read(file_path);
     dbInsert(tags, file);
 
