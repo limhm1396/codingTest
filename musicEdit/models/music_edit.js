@@ -17,7 +17,6 @@ module.exports = (sequelize, DataTypes) => {
     fileName: {
       type: DataTypes.STRING,
       allowNull: false,
-      primaryKey: true,
     },
     albumName: {
       type: DataTypes.STRING,
@@ -26,7 +25,6 @@ module.exports = (sequelize, DataTypes) => {
     artistName: {
       type: DataTypes.STRING,
       allowNull: false,
-      primaryKey: true,
     },
     filePath: {
       type: DataTypes.STRING,
@@ -35,6 +33,8 @@ module.exports = (sequelize, DataTypes) => {
   }, {
     sequelize,
     modelName: 'music_edit',
+    charset: 'utf8',
+    collate: 'utf8_general_ci',
   });
   return music_edit;
 };
