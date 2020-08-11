@@ -14,13 +14,26 @@ module.exports = (sequelize, DataTypes) => {
     }
   };
   edit.init({
-    fileName: DataTypes.STRING,
-    albumName: DataTypes.STRING,
-    artistName: DataTypes.STRING,
-    filePath: DataTypes.STRING
+    fileName: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    albumName: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    artistName: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    filePath: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    }
   }, {
     sequelize,
     modelName: 'edit',
+    charset: 'utf8',
   });
   return edit;
 };

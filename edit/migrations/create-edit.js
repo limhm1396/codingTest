@@ -9,25 +9,23 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       fileName: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
+        allowNull: false,
       },
       albumName: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
+        allowNull: false,
       },
       artistName: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
+        allowNull: false,
       },
       filePath: {
-        type: Sequelize.STRING
-      },
-      createdAt: {
+        type: Sequelize.STRING,
         allowNull: false,
-        type: Sequelize.DATE
       },
-      updatedAt: {
-        allowNull: false,
-        type: Sequelize.DATE
-      }
+    }, {
+      charset: 'utf8',
     });
   },
   down: async (queryInterface, Sequelize) => {
