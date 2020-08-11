@@ -3,7 +3,7 @@ const MusicEdit = require('../models/music_edit');
 
 const router = express.Router();
 
-router.get('/musicEdit', function (req, rex, next) {
+router.get('/musicList', function (req, rex, next) {
     res.render('/music/musicList');
 });
 
