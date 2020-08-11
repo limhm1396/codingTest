@@ -51,7 +51,7 @@ router.post('/create', upload.single("imgFile"), function(req, res, next) {
 });
 
 //음원 수정 업로드 처리
-router.post('/update/:id', upload.single("imgFile"), function(req, res, next) {
+router.post('/update/:id', upload.single("imgFile"), async function(req, res, next) {
     try {
         const postId = req.params.id;
 
