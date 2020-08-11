@@ -35,7 +35,7 @@ router.get('/musicEdit/:id', async function(req, res, next) {
     }
 });
 
-router.put('/musicEdit/:id?_method=PUT', async function(req, res, next) {
+router.put('/musicEdit/:id', async function(req, res, next) {
     try {
         const postId = req.params.id;
         const body = req.body;
