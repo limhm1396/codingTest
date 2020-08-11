@@ -3,12 +3,19 @@
 const fs = require('fs');
 const path = require('path');
 const Sequelize = require('sequelize');
+const MusicEdit = require('./music_edit');
 const basename = path.basename(__filename);
 const env = process.env.NODE_ENV || 'development';
 const config = require(__dirname + '/../config/config.json')[env];
 const db = {};
 
 let sequelize;
+
+db.MusicEdit = MusicEdit;
+
+MusicEdit.init(sequelize);
+MusicEdit.associate(db);
+
 if (config.use_env_variable) {
   sequelize = new Sequelize(process.env[config.use_env_variable], config);
 } else {
