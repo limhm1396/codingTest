@@ -5,11 +5,26 @@
         <title>MUSIC LIST</title>
     </head>
     <body>
-
+    <h1>음원 리스트</h1>
     <form action="/upload/create" method="post" enctype="multipart/form-data">
         <input type="file" name="imgFile">
         <input type="submit" value="음원 업로드하기">
     </form>
-
+    <table>
+        <tr>
+            <td>NO</td>
+            <td>음원명</td>
+            <td>앨범명</td>
+            <td>아티스트 이름</td>
+        </tr>
+        <% for(let post of posts) { %>
+            <tr>
+                <td><%= post.id%></td>
+                <td><%= post.fileName%></td>
+                <td><%= post.albumName%></td>
+                <td><%= post.artistName%></td>
+            </tr>
+        <% } %>
+    </table>
     </body>
 </html>
