@@ -18,7 +18,7 @@ module.exports = class music_edit extends Sequelize.Model {
         allowNull: false,
       },
       filePath: {
-        type: Sequelize.STRING(100),
+        type: Sequelize.STRING,
         allowNull: false,
       },
     }, {
