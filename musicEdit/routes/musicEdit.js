@@ -1,5 +1,5 @@
 const express = require('express');
-const MusicEdit = require('../models/music_Edit');
+const MusicEdit = require('../models/music_edit');
 
 const router = express.Router();
 
