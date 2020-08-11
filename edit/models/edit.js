@@ -33,6 +33,7 @@ module.exports = (sequelize, DataTypes) => {
   }, {
     sequelize,
     modelName: 'edit',
+    timestamps: false,
     charset: 'utf8',
   });
   return edit;
