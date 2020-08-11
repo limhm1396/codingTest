@@ -2,6 +2,7 @@ const express = require('express');
 const models = require('../models');
 const router = express.Router();
 const multer = require("multer");
+const fs = require('fs');
 const path = require("path");
 const NodeID3 = require('node-id3');
 
@@ -52,27 +53,39 @@ router.post('/create', upload.single("imgFile"), function(req, res, next) {
 //음원 수정 업로드 처리
 router.post('/update/:id', upload.single("imgFile"), function(req, res, next) {
     try {
+        const postId = req.params.id;
+
         //파일 객체
         const file_metadata = req.file
 
-        //DB 테이블 업로드
-        const file_path = file_metadata.path;
-        const tags = NodeID3.read(file_path);
-        dbInsert(tags, file_path);
-
-        res.redirect(200, '/edit/musicList');
-
-        let postID = req.params.id;
-  
-        const result = await models.edit.findOne({
-          where: {id: postID}
+        const filePath = await models.edit.findOne({
+            attributes: ['filePath'],
+        }, {
+            where: { id: postId },
         });
 
-        res.render('edit/musicEdit', {
-            post: result
-          });
+        //DB 테이블 업로드
+        const file_path = file_metadata.path;
+
+        await fs.unlink(filePath);
+
+        await models.edit.update({
+            filePath: file_path,
+        }, {
+            where: { id: postId }
+        });
+
+        let postID = req.params.id;
+
+        const result = await models.edit.findAll({
+            attributes: ['id', 'fileName', 'albumName', 'artistName'],
+        })
+        res.render("edit/musicList", {
+            posts: result
+        });
     } catch (err) {
         console.error(err);
+        res.redirect(500, '/edit/musicEdit');
     }
 });
 
