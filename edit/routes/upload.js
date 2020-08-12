@@ -9,7 +9,7 @@ const NodeID3 = require('node-id3');
 async function dbInsert (tags, path) {
     try {
         await models.edit.create({
-            fileName: tags.title,
+            fileName: tags.originalname,
             albumName: tags.album,
             artistName: tags.artist,
             filePath: path,

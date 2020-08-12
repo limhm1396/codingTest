@@ -58,14 +58,12 @@ router.put('/musicEdit/:id', async function(req, res, next) {
         });
 
         const tags = {
-            title: body.editFileName,
+            originalname: body.editFileName,
             album: body.editAlbumName,
             artist: body.editArtistName,
         }
         
         await NodeID3.write(tags, filePath);
-
-        fs.rename(filePath.filePath, body.editFileName);
 
         console.log('음원 수정 완료');
         res.redirect('edit/musicList');
@@ -74,7 +72,7 @@ router.put('/musicEdit/:id', async function(req, res, next) {
     }
 });
 
-router.delete('/edit/:id', async function(req, res, next) {
+router.delete('/musicList/:id', async function(req, res, next) {
     try {
     let postId = req.params.id;
 
@@ -88,9 +86,11 @@ router.delete('/edit/:id', async function(req, res, next) {
       where: {id: postId}
     })
 
-    fs.unlink(filePath);
+    fs.unlink(filePath, (err) => {
+        console.error(err);
+    });
 
-    res.redirect('/edit');
+    res.redirect('/musicList');
     } catch (err) {
       console.error(err);
     }
