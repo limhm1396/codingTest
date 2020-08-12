@@ -65,9 +65,7 @@ router.put('/musicEdit/:id', async function(req, res, next) {
         
         await NodeID3.write(tags, filePath);
 
-        console.log('filePath.filePath : ', filePath.filePath);
-
-        fs.rename(filePath.dataVaules.filePath, body.editFileName);
+        fs.rename(filePath.filePath, body.editFileName);
 
         console.log('음원 수정 완료');
         res.redirect('/edit');
