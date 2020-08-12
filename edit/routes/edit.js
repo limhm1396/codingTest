@@ -66,7 +66,7 @@ router.put('/musicEdit/:id', async function(req, res, next) {
         await NodeID3.write(tags, filePath);
 
         console.log('음원 수정 완료');
-        res.redirect('edit/musicList');
+        res.redirect('/musicList');
     } catch (err) {
         console.error(err);
     }
