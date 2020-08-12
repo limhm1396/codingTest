@@ -35,7 +35,7 @@ router.get('/ascList', async function(req, res, next) {
 
 router.post('/saerchList', async function(req, res, next) {
     try {
-        if (!req.body) {
+        if (req.body.searchName == '') {
             res.redirect(500, '/edit/musicList');
         }
         const result = await models.edit.findAll({
