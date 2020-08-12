@@ -42,13 +42,12 @@ let upload = multer({
 router.post('/create', upload.single("imgFile"), function(req, res, next) {
     //파일 객체
     const file_metadata = req.file
-    console.log(file_metadata);
 
     //DB 테이블 업로드
     const file_path = file_metadata.path;
     const tags = NodeID3.read(file_path);
     tags.originalFilename = file_metadata.filename;
-    console.log('tags: ', tags);
+
     dbInsert(tags, file_path);
 
     res.redirect(200, '/edit/musicList');

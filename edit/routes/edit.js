@@ -42,7 +42,7 @@ router.put('/musicEdit/:id', async function(req, res, next) {
         const body = req.body;
 
         await models.edit.update({
-            filaName: body.editFileName,
+            fileName: body.editFileName,
             albumName: body.editAlbumName,
             artistName: body.editArtistName,
         }, {
@@ -58,7 +58,7 @@ router.put('/musicEdit/:id', async function(req, res, next) {
         });
 
         const tags = {
-            originalname: body.editFileName,
+            originalFilename: body.editFileName,
             album: body.editAlbumName,
             artist: body.editArtistName,
         }
