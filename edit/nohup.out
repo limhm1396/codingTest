@@ -1,0 +1,25 @@
+
+> edit@0.0.0 start /home/ubuntu/codingTest/edit
+> node ./bin/www
+
+DB connect success
+(node:15188) [SEQUELIZE0004] DeprecationWarning: A boolean value was passed to options.operatorsAliases. This is a no-op with v5 and should be removed.
+Executing (default): CREATE TABLE IF NOT EXISTS `edits` (`id` INTEGER NOT NULL auto_increment , `fileName` VARCHAR(255) NOT NULL, `albumName` VARCHAR(255) NOT NULL, `artistName` VARCHAR(255) NOT NULL, `filePath` VARCHAR(255) NOT NULL, PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+Executing (default): SHOW INDEX FROM `edits` FROM `edit`
+
+> edit@0.0.0 start /home/ubuntu/codingTest/edit
+> node ./bin/www
+
+DB connect success
+(node:15589) [SEQUELIZE0004] DeprecationWarning: A boolean value was passed to options.operatorsAliases. This is a no-op with v5 and should be removed.
+Executing (default): CREATE TABLE IF NOT EXISTS `edits` (`id` INTEGER NOT NULL auto_increment , `fileName` VARCHAR(255) NOT NULL, `albumName` VARCHAR(255) NOT NULL, `artistName` VARCHAR(255) NOT NULL, `filePath` VARCHAR(255) NOT NULL, PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+Executing (default): SHOW INDEX FROM `edits` FROM `edit`
+Executing (default): SELECT `id`, `fileName`, `albumName`, `artistName` FROM `edits` AS `edit`;
+[0mGET /edit/musicList [36m304 [0m22.342 ms - -[0m
+Executing (default): SELECT `id`, `fileName`, `albumName`, `artistName` FROM `edits` AS `edit`;
+[0mGET /edit/musicList [36m304 [0m4.139 ms - -[0m
+[0mPOST /upload/create [31m500 [0m14.679 ms - 955[0m
+Executing (default): SELECT `id`, `fileName`, `albumName`, `artistName` FROM `edits` AS `edit` ORDER BY `edit`.`fileName` ASC;
+[0mGET /edit/ascList? [36m304 [0m8.054 ms - -[0m
+Executing (default): SELECT `id`, `fileName`, `albumName`, `artistName` FROM `edits` AS `edit` ORDER BY `edit`.`fileName` ASC;
+[0mGET /edit/ascList? [36m304 [0m5.350 ms - -[0m
