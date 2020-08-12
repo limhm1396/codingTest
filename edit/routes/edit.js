@@ -36,21 +36,13 @@ router.get('/ascList', async function(req, res, next) {
 
 router.post('/searchList', async function(req, res, next) {
     try {
-        console.log('req : ', req);
-        console.log('req.body : ', req.body);
-        const body = req.body;
-        console.log('body : ', body);
-        const searchName = body.searchName;
-        console.log('searchName : ', searchName);
         const result = await models.edit.findAll({
             attributes: ['id', 'fileName', 'albumName', 'artistName'],
         }, {
             where: { 
-                fileName: searchName,
+                'fileName': req.body.searchName,
             },
         });
-        console.log('searchName : ', searchName);
-        console.log('result : ', result);
 
         res.render("edit/musicList", {
             posts: result
