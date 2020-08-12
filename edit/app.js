@@ -24,6 +24,7 @@ async function dbConnect () {
 
 dbConnect();
 
+app.use(methodOverride('_method'));
 var app = express();
 
 // view engine setup
@@ -41,7 +42,6 @@ app.use('/users', usersRouter);
 app.use('/edit', editRouter);
 app.use('/upload', fileUploadRouter);
 app.use('/upload', express.static('uploads'));
-app.use(methodOverride('_method'));
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
