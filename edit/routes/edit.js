@@ -4,6 +4,7 @@ const router = express.Router();
 const NodeID3 = require('node-id3');
 const fs = require('fs');
 const path = require("path");
+const { search } = require('../../login/routes/users');
 
 //뷰 페이지 경로
 router.get('/musicList', async function(req, res, next) {
@@ -35,7 +36,10 @@ router.get('/ascList', async function(req, res, next) {
 
 router.post('/searchList', async function(req, res, next) {
     try {
-        const searchName = req.body.searchName;
+        const body = req.body;
+        console.log('body : ', body);
+        const searchName = body.searchName;
+        console.log('searchName : ', searchName);
         const result = await models.edit.findAll({
             attributes: ['id', 'fileName', 'albumName', 'artistName'],
         }, {
