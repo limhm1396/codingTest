@@ -39,10 +39,10 @@ router.get('/searchList', async function(req, res, next) {
             attributes: ['id', 'fileName', 'albumName', 'artistName'],
         }, { 
             where: { 
-                fileName: req.body.searchName
-            }
+                fileName: req.body.searchName,
+            },
         });
-        console.log('result : ', result);
+
         res.render("edit/musicList", {
             posts: result
         });
