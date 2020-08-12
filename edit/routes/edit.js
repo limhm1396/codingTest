@@ -63,7 +63,7 @@ router.put('/musicEdit/:id', async function(req, res, next) {
             artist: body.editArtistName,
         }
         
-        const sucess = await NodeID3.update(tags, filePath);
+        await NodeID3.write(tags, filePath);
 
         fs.rename(filePath, body.editFileName);
 
