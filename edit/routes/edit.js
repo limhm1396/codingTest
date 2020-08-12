@@ -33,6 +33,23 @@ router.get('/ascList', async function(req, res, next) {
     }
 });
 
+router.post('/saerchList', async function(req, res, next) {
+    try {
+        const result = await models.edit.findAll({
+            attributes: ['id', 'fileName', 'albumName', 'artistName'],
+        }, {
+            where: {
+                fileName: req.body.searchName,
+            }
+        });
+        res.render("edit/musicList", {
+            posts: result
+        });
+    } catch (err) {
+        console.error(err);
+    }
+});
+
 //수정
 router.get('/musicEdit/:id', async function(req, res, next) {
     try {
