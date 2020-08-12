@@ -36,6 +36,8 @@ router.get('/ascList', async function(req, res, next) {
 
 router.post('/searchList', async function(req, res, next) {
     try {
+        console.log('req : ', req);
+        console.log('req.body : ', req.body);
         const body = req.body;
         console.log('body : ', body);
         const searchName = body.searchName;
