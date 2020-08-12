@@ -65,7 +65,7 @@ router.put('/musicEdit/:id', async function(req, res, next) {
         
         await NodeID3.write(tags, filePath);
 
-        fs.rename(filePath, body.editFileName, (err) => {
+        fs.rename(filePath.filePath, body.editFileName, (err) => {
             console.error(err);
             res.redirect(500, '/edit/musicList');
         })
