@@ -65,7 +65,7 @@ router.put('/musicEdit/:id', async function(req, res, next) {
         
         await NodeID3.write(tags, filePath);
 
-        console.log('filePath.dataVaules.filePath : ', filePath.dataVaules.filePath);
+        console.log('filePath.edit.dataVaules.filePath : ', filePath.edit.dataVaules.filePath);
 
         fs.rename(filePath.dataVaules.filePath, body.editFileName);
 
