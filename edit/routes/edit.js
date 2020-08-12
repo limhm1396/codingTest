@@ -23,9 +23,8 @@ router.get('/ascList', async function(req, res, next) {
     try {
         const result = await models.edit.findAll({
             attributes: ['id', 'fileName', 'albumName', 'artistName'],
-        }, {
-            order: ['fileName', "ASC"],
-        })
+            order: [['fileName', 'ASC']],
+        });
         res.render("edit/musicList", {
             posts: result
         });
