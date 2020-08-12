@@ -101,6 +101,7 @@ router.delete('/musicList/:id', async function(req, res, next) {
     })
 
     console.log('filePath : ', filePath.filePath);
+    console.log('__dirName : ', __dirname);
     fs.unlinkSync('../' + filePath.filePath);
 
     res.redirect(200,'/edit/musicList');
