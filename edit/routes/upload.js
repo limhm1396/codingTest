@@ -70,7 +70,9 @@ router.post('/update/:id', upload.single("imgFile"), async function(req, res, ne
         //DB 테이블 업로드
         const file_path = file_metadata.path;
 
-        await fs.unlink(filePath);
+        fs.unlink(filePath.filePath, (err) => {
+            console.error(err);
+        });
 
         await models.edit.update({
             filePath: file_path,

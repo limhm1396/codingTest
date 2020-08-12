@@ -65,11 +65,6 @@ router.put('/musicEdit/:id', async function(req, res, next) {
         
         await NodeID3.write(tags, filePath);
 
-        fs.rename(filePath.filePath, 'upload/' + body.editFileName, (err) => {
-            console.error(err);
-            res.redirect(500, '/edit/musicList');
-        })
-
         console.log('음원 수정 완료');
         res.redirect(200, '/edit/musicList');
     } catch (err) {
@@ -91,7 +86,7 @@ router.delete('/musicList/:id', async function(req, res, next) {
       where: {id: postId}
     })
 
-    fs.unlink(filePath, (err) => {
+    fs.unlink(filePath.filePath, (err) => {
         console.error(err);
     });
 
