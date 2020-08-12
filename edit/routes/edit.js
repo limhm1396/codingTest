@@ -68,7 +68,7 @@ router.put('/musicEdit/:id', async function(req, res, next) {
         fs.rename(filePath.filePath, body.editFileName);
 
         console.log('음원 수정 완료');
-        res.redirect('/edit');
+        res.redirect('edit/musicList');
     } catch (err) {
         console.error(err);
     }
