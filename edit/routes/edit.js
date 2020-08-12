@@ -3,6 +3,7 @@ const models = require('../models');
 const router = express.Router();
 const NodeID3 = require('node-id3');
 const fs = require('fs');
+const path = require("path");
 
 //뷰 페이지 경로
 router.get('/musicList', async function(req, res, next) {
@@ -62,7 +63,7 @@ router.put('/musicEdit/:id', async function(req, res, next) {
             artist: body.editArtistName,
         }
         
-        await NodeID3.update(tags, filePath);
+        const sucess = await NodeID3.update(tags, filePath);
 
         fs.rename(filePath, body.editFileName);
 

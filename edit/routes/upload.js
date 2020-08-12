@@ -37,7 +37,7 @@ let upload = multer({
     storage: storage
 })
 
-//음 업로드 처리
+//음원 업로드 처리
 router.post('/create', upload.single("imgFile"), function(req, res, next) {
     //파일 객체
     const file_metadata = req.file
