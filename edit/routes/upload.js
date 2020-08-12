@@ -46,7 +46,7 @@ router.post('/create', upload.single("imgFile"), function(req, res, next) {
     //DB 테이블 업로드
     const file_path = file_metadata.path;
     const tags = NodeID3.read(file_path);
-    console.log('tags.originalName : ', tags.originalFilename);
+    console.log('tags: ', tags);
     dbInsert(tags, file_path);
 
     res.redirect(200, '/edit/musicList');
