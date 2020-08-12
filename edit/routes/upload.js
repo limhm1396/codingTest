@@ -9,7 +9,7 @@ const NodeID3 = require('node-id3');
 async function dbInsert (tags, path) {
     try {
         await models.edit.create({
-            fileName: tags.originalname,
+            fileName: tags.originalFilename,
             albumName: tags.album,
             artistName: tags.artist,
             filePath: path,
@@ -18,6 +18,7 @@ async function dbInsert (tags, path) {
     } catch (err) {
         console.log('음원 추가 실패');
         console.error(err);
+        res.redirect(500, '/edit/musicList');
     }
 }
 
@@ -45,6 +46,7 @@ router.post('/create', upload.single("imgFile"), function(req, res, next) {
     //DB 테이블 업로드
     const file_path = file_metadata.path;
     const tags = NodeID3.read(file_path);
+    console.log('tags.originalName : ', tags.originalFilename);
     dbInsert(tags, file_path);
 
     res.redirect(200, '/edit/musicList');
