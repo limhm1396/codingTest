@@ -155,3 +155,20 @@ Executing (default): CREATE TABLE IF NOT EXISTS `users` (`name` VARCHAR(255) NOT
 [0mGET /users/login [36m304 [0m0.919 ms - -[0m
 [0mGET /users/login [32m200 [0m1.003 ms - 636[0m
 [0mGET /favicon.ico [33m404 [0m1.444 ms - 993[0m
+
+> login@0.0.0 start /home/ubuntu/codingTest/login
+> node ./bin/www
+
+Executing (default): CREATE TABLE IF NOT EXISTS `users` (`name` VARCHAR(255) NOT NULL, `id` VARCHAR(255) NOT NULL , `password` VARCHAR(255) NOT NULL, `salt` VARCHAR(255), `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+Executing (default): SHOW INDEX FROM `users` FROM `login`
+ DB 연결 성공
+[0mGET /users/login [36m304 [0m13.224 ms - -[0m
+[0mGET /favicon.ico [33m404 [0m2.616 ms - 993[0m
+[0mGET /users/login [36m304 [0m1.870 ms - -[0m
+[0mGET /favicon.ico [33m404 [0m1.967 ms - 993[0m
+Executing (default): SELECT `name`, `id`, `password`, `salt`, `createdAt`, `updatedAt` FROM `users` AS `user` WHERE `user`.`id` = 'abc';
+비밀번호 일치
+[0mPOST /users/login [32m200 [0m31.086 ms - 71[0m
+[0mGET /users/userPage [36m304 [0m1.633 ms - -[0m
+[0mGET /users/logout? [36m302 [0m1.604 ms - 68[0m
+[0mGET /users/login [32m200 [0m1.089 ms - 636[0m

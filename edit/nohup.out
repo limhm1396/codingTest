@@ -23,3 +23,29 @@ Executing (default): SELECT `id`, `fileName`, `albumName`, `artistName` FROM `ed
 [0mGET /edit/ascList? [36m304 [0m8.054 ms - -[0m
 Executing (default): SELECT `id`, `fileName`, `albumName`, `artistName` FROM `edits` AS `edit` ORDER BY `edit`.`fileName` ASC;
 [0mGET /edit/ascList? [36m304 [0m5.350 ms - -[0m
+
+> edit@0.0.0 start /home/ubuntu/codingTest/edit
+> node ./bin/www
+
+DB connect success
+(node:19556) [SEQUELIZE0004] DeprecationWarning: A boolean value was passed to options.operatorsAliases. This is a no-op with v5 and should be removed.
+Executing (default): CREATE TABLE IF NOT EXISTS `edits` (`id` INTEGER NOT NULL auto_increment , `fileName` VARCHAR(255) NOT NULL, `albumName` VARCHAR(255) NOT NULL, `artistName` VARCHAR(255) NOT NULL, `filePath` VARCHAR(255) NOT NULL, PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+Executing (default): SHOW INDEX FROM `edits` FROM `edit`
+Executing (default): SELECT `id`, `fileName`, `albumName`, `artistName` FROM `edits` AS `edit`;
+[0mGET /edit/musicList [36m304 [0m25.023 ms - -[0m
+[0mGET /favicon.ico [33m404 [0m2.657 ms - 983[0m
+Executing (default): SELECT `id`, `fileName`, `albumName`, `artistName` FROM `edits` AS `edit`;
+[0mGET /edit/musicList [36m304 [0m6.623 ms - -[0m
+[0mGET /favicon.ico [33m404 [0m3.173 ms - 983[0m
+Executing (default): SELECT `id`, `fileName`, `albumName`, `artistName` FROM `edits` AS `edit` ORDER BY `edit`.`fileName` ASC;
+[0mGET /edit/ascList? [32m200 [0m5.417 ms - 2929[0m
+Executing (default): SELECT `id`, `fileName`, `albumName`, `artistName` FROM `edits` AS `edit`;
+[0mGET /edit/musicList? [32m200 [0m3.096 ms - 2929[0m
+Executing (default): SELECT `id`, `fileName`, `albumName`, `artistName` FROM `edits` AS `edit`;
+[0mGET /edit/musicList? [36m304 [0m3.183 ms - -[0m
+Executing (default): SELECT `id`, `fileName`, `albumName`, `artistName`, `filePath` FROM `edits` AS `edit` WHERE `edit`.`id` = '8';
+[0mGET /edit/musicEdit/8 [32m200 [0m9.845 ms - 1194[0m
+Executing (default): SELECT `id`, `fileName`, `albumName`, `artistName`, `filePath` FROM `edits` AS `edit` WHERE `edit`.`fileName` = '02 Bach_ Lute Suite In E Minor, BWV.mp3';
+[0mPOST /edit/searchList [32m200 [0m14.575 ms - 1471[0m
+Executing (default): SELECT `id`, `fileName`, `albumName`, `artistName` FROM `edits` AS `edit`;
+[0mGET /edit/musicList? [36m304 [0m4.566 ms - -[0m
